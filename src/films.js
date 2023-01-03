@@ -21,7 +21,12 @@ function moviesAverageOfDirector(array, director) {
 
 function moviesAverage(array){
   let resultado = array.reduce ((acc,item) => {
-    return acc += item.score
+    if (!isNaN(item.score)){
+      return acc += item.score;
+    }else{
+      return acc +=0;
+    }
+    
   },0);
 
   return Number(Number(resultado/array.length).toFixed(2)); 
@@ -29,7 +34,7 @@ function moviesAverage(array){
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
-  let resultado = array.sort( (a,b) => {
+  let resultado = array.slice().sort( (a,b) => {
     if (a.title > b.title){
       return 1;
     }
@@ -45,7 +50,7 @@ function orderAlphabetically(array) {
 
 // Exercise 5: Order by year, ascending
 function orderByYear(array) {
-let resultado = array.sort((a,b) => {
+let resultado = array.slice().sort((a,b) => {
   if (a.year>b.year){
     return 1;
   }
